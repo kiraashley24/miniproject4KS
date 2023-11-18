@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Django App{% endblock %}</title>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="{% url 'polls:index' %}">Home</a></li>
+        <li><a href="{% url 'polls:detail' pk=1 %}">Sample Question</a></li>
+        <li><a href="{% url 'polls:results' pk=1 %}">Sample Results</a></li>
+        <li><a href="{% url 'polls:vote' question_id=1 %}">Sample Vote</a></li>
+        <li><a href="{% url 'register' %}">Register</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
+    </ul>
+</nav>
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

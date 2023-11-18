@@ -1,11 +1,12 @@
 from django.http import HttpResponse, HttpResponseRedirect
-from django.template import loader
-from django.shortcuts import get_object_or_404, render
-from .models import Choice, Question
+from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
 
+from .models import Choice, Question
 
 class IndexView(generic.ListView):
     template_name = "polls/index.html"
@@ -22,11 +23,9 @@ class DetailView(generic.DetailView):
     model = Question
     template_name = "polls/detail.html"
 
-
 class ResultsView(generic.DetailView):
     model = Question
     template_name = "polls/results.html"
-
 
 def vote(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
@@ -49,3 +48,14 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse("polls:results", args=(question.id,)))
+
+def register(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('index')  # Redirect to your index page
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/register.html', {'form': form})
