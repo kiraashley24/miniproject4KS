@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body" style="background-color: antiquewhite; color: darkred;">
                         <h2 class="text-center mb-4">Login</h2>
                         <form method="post" action="{% url 'login' %}">
                             {% csrf_token %}
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="mt-3 text-center">
-                    <p>Don't have an account? <a href="{% url 'register' %}">Register here</a>.</p>
+                    <p><strong>Don't have an account?</strong> <a href="{% url 'register' %}"><strong>Register here</strong></a>.</p>
                 </div>
             </div>
         </div>
