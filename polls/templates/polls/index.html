@@ -4,19 +4,17 @@
 
 {% block content %}
      <!-- Your index page content goes here -->
-        <h1>Welcome to Cinema Theater</h1>
-        <img src="{% static 'polls/images/home.jpg' %}">
-        <p>Words</p>
-
-    {% if latest_question_list %}
-        <ul>
-            {% for question in latest_question_list %}
-                <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No polls are available.</p>
-
-    {% endif %}
+    <div class="container text-center mt-4">
+        <h1 style="color: antiquewhite;">Welcome to Cinema Theater</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mb-4" style="background-color: antiquewhite; color: darkred;">
+                    <img src="{% static 'polls/images/home.jpg' %}" class="card-img-top" alt="home">
+                    <div class="card-body" style="background-color: antiquewhite; color: darkred;">
+                        <p class="card-text">Words</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
-

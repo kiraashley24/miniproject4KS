@@ -1,13 +1,47 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block content %}
-    <h1>Food Menu</h1>
-
-    <p>Explore our delicious food options:</p>
-
-    <ul>
-        {% for item in menu_data %}
-            <li>{{ item.item }} - ${{ item.price }}</li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <h2 class="text-center mb-4">Food Menu</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <img src="{% static 'polls/images/popcorn.jpg' %}" class="card-img-top" alt="popcorn">
+                    <div class="card-body">
+                        <h5 class="card-title">Popcorn</h5>
+                        <p class="card-text">Small: $4.99 | Medium: $6.99 | Large: $8.99 | X-Large: $10.99</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <img src="{% static 'polls/images/candy.jpg' %}" class="card-img-top" alt="candy">
+                    <div class="card-body">
+                        <h5 class="card-title">Candy</h5>
+                        <p class="card-text">$3.99</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <img src="{% static 'polls/images/drinks.jpg' %}" class="card-img-top" alt="drinks">
+                    <div class="card-body">
+                        <h5 class="card-title">Drinks</h5>
+                        <p class="card-text">Small: $3.99 | Medium: $4.99 | Large: $6.99 | X-Large: $8.99</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <img src="{% static 'polls/images/pretzel.jpg' %}" class="card-img-top" alt="pretzel">
+                    <div class="card-body">
+                        <h5 class="card-title">Soft Pretzel</h5>
+                        <p class="card-text">$5.99</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

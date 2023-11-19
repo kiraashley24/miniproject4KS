@@ -3,18 +3,19 @@ li a {
 }
 
 nav {
-    background-color: blue;
+    background-color: #ba4545;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-
 }
 
 nav a {
     text-decoration: none;
+    color: #ffff76;
+    font-weight: bold;
 }
 
 nav a:hover {
@@ -26,7 +27,6 @@ nav li {
 }
 
 header {
-    color: yellow;
     text-align: center;
     padding: 20px;
     font-size: xx-large;
@@ -36,14 +36,9 @@ body {
     background-color: darkred;
 }
 
-img {
-    display: block;
-    margin: auto;
-    width: 50%;
-    height: auto;
-}
 
-h1 {
-    color: yellow;
+header {
+    background-color: antiquewhite;
+    color: darkred;
 }
 
