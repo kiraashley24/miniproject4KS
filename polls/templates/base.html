@@ -14,14 +14,16 @@
 <nav>
     <ul>
         <li><a href="{% url 'polls:index' %}">HOME</a></li>
+        <li><a href="{% url 'login' %}">LOGIN</a></li>
+        <li><a href="{% url 'polls:menu' %}">FOOD MENU</a></li>
         <li><a href="{% url 'polls:showtimes' %}">SHOWTIMES</a></li>
         <li><a href="{% url 'polls:tickets' %}">TICKETS</a></li>
-        <li><a href="{% url 'polls:menu' %}">FOOD MENU</a></li>
-        <li><a href="{% url 'login' %}">LOGIN</a></li>
     </ul>
 </nav>
 
 {% block content %}{% endblock %}
-
+    <footer style="color: antiquewhite">
+        <p>&copy; 2023 Cinema Theater. All rights reserved.</p>
+    </footer>
 </body>
 </html>
