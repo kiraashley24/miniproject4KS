@@ -4,14 +4,13 @@
 
 {% block content %}
     <div class="container">
-        <h2 class="text-center mb-4" style="color: antiquewhite;">Showtimes</h2>
+        <h2 class="text-center mb-4" style="color: antiquewhite;">SHOWTIMES</h2>
         <div class="row">
             <div class="col-md-6">
                 <div class="card mb-4" style="background-color: antiquewhite; color: black;">
                     <img src="{% static 'polls/images/elf.jpg' %}" class="card-img-top" alt="elf">
                     <div class="card-body">
                         <h5 class="card-title">Elf</h5>
-                        <p class="card-text">Showtimes</p>
                     </div>
                 </div>
             </div>
@@ -20,7 +19,6 @@
                     <img src="{% static 'polls/images/ghost.png' %}" class="card-img-top" alt="ghostbusters">
                     <div class="card-body">
                         <h5 class="card-title">Ghostbusters 2</h5>
-                        <p class="card-text">Showtimes</p>
                     </div>
                 </div>
             </div>
@@ -29,7 +27,6 @@
                     <img src="{% static 'polls/images/ryan.jpg' %}" class="card-img-top" alt="privateryan">
                     <div class="card-body">
                         <h5 class="card-title">Saving Private Ryan</h5>
-                        <p class="card-text">Showtimes</p>
                     </div>
                 </div>
             </div>
@@ -38,7 +35,6 @@
                     <img src="{% static 'polls/images/jurassic.jpg' %}" class="card-img-top" alt="jurassic">
                     <div class="card-body">
                         <h5 class="card-title">Jurassic Park</h5>
-                        <p class="card-text">Showtimes</p>
                     </div>
                 </div>
             </div>
@@ -47,7 +43,6 @@
                     <img src="{% static 'polls/images/shrek.png' %}" class="card-img-top" alt="shrek">
                     <div class="card-body">
                         <h5 class="card-title">Shrek</h5>
-                        <p class="card-text">Showtimes</p>
                     </div>
                 </div>
             </div>
@@ -56,30 +51,28 @@
                     <img src="{% static 'polls/images/lambs.png' %}" class="card-img-top" alt="lambs">
                     <div class="card-body">
                         <h5 class="card-title">The Silence of the Lambs</h5>
-                        <p class="card-text">Showtimes</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <h1>Showtimes</h1>
+    <div class="container text-left mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card mb-4" style="background-color: antiquewhite; color: black;">
+                <img src="{% static 'polls/images/showtimes.png' %}" class="card-img-top" alt="home">
+                <div class="card-body" style="font-size: 1.2rem;">
+                    <p class="card-text">Check out our latest movie showtimes:</p>
+                    <ul>
+                        {% for showtime in showtime_data %}
+                            <li>{{ showtime.movie }} - {{ showtime.time }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <p>Check out our latest movie showtimes:</p>
 
-    <ul>
-        {% for showtime in showtime_data %}
-            <li>{{ showtime.movie }} - {{ showtime.time }}</li>
-        {% endfor %}
-    </ul>
-
-        {% if latest_question_list %}
-        <ul>
-            {% for question in latest_question_list %}
-                <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No polls are available.</p>
-
-    {% endif %}
 {% endblock %}
