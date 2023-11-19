@@ -1,7 +1,49 @@
 li a {
-    color: green;
+    color: yellow;
 }
 
-body {
-    background: white url("images/background.png") no-repeat;
+nav {
+    background-color: blue;
 }
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav li {
+    margin-right: 30px; /* Adjust the spacing between menu items */
+}
+
+header {
+    color: yellow;
+    text-align: center;
+    padding: 20px;
+    font-size: xx-large;
+    font-weight: bold;
+}
+body {
+    background-color: darkred;
+}
+
+img {
+    display: block;
+    margin: auto;
+    width: 50%;
+    height: auto;
+}
+
+h1 {
+    color: yellow;
+}
+

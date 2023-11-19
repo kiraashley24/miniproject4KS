@@ -59,3 +59,36 @@ def register(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/register.html', {'form': form})
+
+def showtimes(request):
+    # Add logic to retrieve actual showtime data from your database
+    showtime_data = [
+        {"movie": "Movie 1", "time": "2:00 PM"},
+        {"movie": "Movie 2", "time": "4:30 PM"},
+        {"movie": "Movie 3", "time": "7:00 PM"},
+        # Add more showtime data as needed
+    ]
+
+    return render(request, 'polls/showtimes.html', {'showtime_data': showtime_data})
+
+def menu(request):
+    # Add logic to retrieve actual menu data from your database
+    menu_data = [
+        {"item": "Burger", "price": 10.99},
+        {"item": "Popcorn", "price": 5.99},
+        {"item": "Pizza", "price": 12.99},
+        # Add more menu items as needed
+    ]
+
+    return render(request, 'polls/menu.html', {'menu_data': menu_data})
+
+def tickets(request):
+    # Add logic to retrieve actual ticket data from your database
+    ticket_data = [
+        {"type": "Standard Ticket", "price": 12.99},
+        {"type": "Senior Ticket (65+)", "price": 9.99},
+        {"type": "Child Ticket (12 and under)", "price": 7.99},
+        # Add more ticket data as needed
+    ]
+
+    return render(request, 'polls/tickets.html', {'ticket_data': ticket_data})

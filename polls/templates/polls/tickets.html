@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Tickets</h1>
+
+    <p>Explore our ticket options:</p>
+
+    <ul>
+        {% for ticket in ticket_data %}
+            <li>{{ ticket.type }} - ${{ ticket.price }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

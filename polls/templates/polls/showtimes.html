@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Showtimes</h1>
+
+    <p>Check out our latest movie showtimes:</p>
+
+    <ul>
+        {% for showtime in showtime_data %}
+            <li>{{ showtime.movie }} - {{ showtime.time }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
