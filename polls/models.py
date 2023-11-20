@@ -27,16 +27,15 @@ class Choice(models.Model):
         return self.choice_text
 
 class TicketType(models.Model):
-    type_name = models.CharField(max_length=100, unique=True)
+    name = models.CharField(max_length=50, unique=True, default='Standard')
 
     def __str__(self):
-        return self.type_name
+        return self.name
 
 class Ticket(models.Model):
-    QUANTITY_CHOICES = [(i, str(i)) for i in range(1, 11)]
-
-    quantity = models.IntegerField(choices=QUANTITY_CHOICES)
-    price = models.DecimalField(max_digits=5, decimal_places=2, default=0.00)  # Set your default value
+    type = models.ForeignKey(TicketType, on_delete=models.CASCADE, default=1)
+    quantity = models.PositiveIntegerField(default=0)
+    price = models.DecimalField(max_digits=6, decimal_places=2)
 
     def __str__(self):
-        return f"{self.quantity} Ticket(s)"
+        return f"{self.quantity} {self.type.name} ticket(s) - ${self.price}"

@@ -87,20 +87,18 @@ def menu(request):
     return render(request, 'polls/menu.html', {'menu_data': menu_data})
 
 def tickets(request):
-    # Add logic to retrieve actual ticket data from your database
-    ticket_data = [
-        {"quantity": i, "price": 12.99 * i} for i in range(1, 11)
-    ]  # Adjust the price calculation as needed
+    ticket_data = Ticket.objects.all()
+    form = TicketForm()
 
     if request.method == 'POST':
         form = TicketForm(request.POST)
         if form.is_valid():
-            # Handle form submission, e.g., save to the database
-            pass
-    else:
-        form = TicketForm()
+            form.save()
+            # Optionally, you can redirect to a success page or modify as needed.
 
     return render(request, 'polls/tickets.html', {'ticket_data': ticket_data, 'form': form})
+
+
 
 def contact(request):
     return render(request, "polls/contact.html")
