@@ -94,3 +94,6 @@ def tickets(request):
     ]
 
     return render(request, 'polls/tickets.html', {'ticket_data': ticket_data})
+
+def contact(request):
+    return render(request, "polls/contact.html")

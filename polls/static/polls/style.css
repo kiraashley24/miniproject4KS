@@ -31,14 +31,13 @@ header {
     padding: 20px;
     font-size: xx-large;
     font-weight: bold;
+    background-color: antiquewhite;
+    color: darkred;
 }
 body {
     background-color: darkred;
 }
 
-
-header {
-    background-color: antiquewhite;
-    color: darkred;
+footer {
+    text-align: center;
 }
-

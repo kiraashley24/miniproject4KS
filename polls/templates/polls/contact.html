@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="container text-center mt-4">
+        <h1 style="color: antiquewhite;">CONTACT US</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mb-4" style="background-color: antiquewhite; color: black;">
+                    <img src="{% static 'polls/images/home.jpg' %}" class="card-img-top" alt="home">
+                    <div class="card-body">
+                        <p>We are located off of I-90 in Hankston<br>
+                        Cinema Theater<br>
+                        809 Illest Rd<br>
+                            Hankston, CO 80304</p>
+                        <p><strong>Phone:</strong> 123-456-7890<br>
+                        <strong>Email:</strong> cinematheater@theater.com</p>
+                        <p class="card-text">Please contact us if you have questions or concerns.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
