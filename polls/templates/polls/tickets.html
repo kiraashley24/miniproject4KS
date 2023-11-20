@@ -17,17 +17,8 @@
                                 {{ form.as_p }}
                                 <button type="submit">Submit</button>
                             </form>
-
-                            {% for ticket in ticket_data %}
-                                <p>{{ ticket }}</p>
-                            {% endfor %}
-
-                            {% if messages %}
-                                <ul class="messages">
-                                    {% for message in messages %}
-                                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                                    {% endfor %}
-                                </ul>
+                            {% if ticket_purchase_message %}
+                                <p>{{ ticket_purchase_message }}</p>
                             {% endif %}
                         </div>
                     </div>

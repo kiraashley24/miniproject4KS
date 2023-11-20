@@ -91,14 +91,17 @@ def menu(request):
 def tickets(request):
     ticket_data = Ticket.objects.all()
     form = TicketForm()
+    ticket_purchase_message = ""
 
     if request.method == 'POST':
         form = TicketForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Thanks for purchasing your tickets. Enjoy your movie.')
+            ticket_purchase_message = "Thanks for purchasing your tickets. Enjoy your movie!"
+            # Optionally, you can redirect to a success page or modify as needed.
+            messages.success(request, ticket_purchase_message)
 
-    return render(request, 'polls/tickets.html', {'ticket_data': ticket_data, 'form': form})
+    return render(request, 'polls/tickets.html', {'ticket_data': ticket_data, 'form': form, 'ticket_purchase_message': ticket_purchase_message})
 
 
 def contact(request):
