@@ -7,6 +7,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from .models import TicketType, Ticket
 from .forms import TicketForm
+from django.contrib import messages
 
 from .models import Choice, Question
 
@@ -86,6 +87,7 @@ def menu(request):
 
     return render(request, 'polls/menu.html', {'menu_data': menu_data})
 
+
 def tickets(request):
     ticket_data = Ticket.objects.all()
     form = TicketForm()
@@ -94,10 +96,9 @@ def tickets(request):
         form = TicketForm(request.POST)
         if form.is_valid():
             form.save()
-            # Optionally, you can redirect to a success page or modify as needed.
+            messages.success(request, 'Thanks for purchasing your tickets. Enjoy your movie.')
 
     return render(request, 'polls/tickets.html', {'ticket_data': ticket_data, 'form': form})
-
 
 
 def contact(request):
