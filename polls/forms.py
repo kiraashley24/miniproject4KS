@@ -4,4 +4,4 @@ from .models import Ticket
 class TicketForm(forms.ModelForm):
     class Meta:
         model = Ticket
-        fields = ['type', 'quantity', 'price']
+        fields = ['type', 'quantity']

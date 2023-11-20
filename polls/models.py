@@ -35,7 +35,6 @@ class TicketType(models.Model):
 class Ticket(models.Model):
     type = models.ForeignKey(TicketType, on_delete=models.CASCADE, default=1)
     quantity = models.PositiveIntegerField(default=0)
-    price = models.DecimalField(max_digits=6, decimal_places=2)
 
     def __str__(self):
-        return f"{self.quantity} {self.type.name} ticket(s) - ${self.price}"
+        return f"{self.quantity} {self.type.name} ticket(s)"
