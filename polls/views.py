@@ -90,7 +90,6 @@ def tickets(request):
         {"type": "Standard Ticket", "price": 12.99},
         {"type": "Senior Ticket (65+)", "price": 9.99},
         {"type": "Child Ticket (12 and under)", "price": 7.99},
-        # Add more ticket data as needed
     ]
 
     return render(request, 'polls/tickets.html', {'ticket_data': ticket_data})

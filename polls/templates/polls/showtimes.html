@@ -57,22 +57,22 @@
         </div>
     </div>
     <div class="container text-left mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card mb-4" style="background-color: antiquewhite; color: black;">
-                <img src="{% static 'polls/images/showtimes.png' %}" class="card-img-top" alt="home">
-                <div class="card-body" style="font-size: 1.2rem;">
-                    <p class="card-text">Check out our latest movie showtimes:</p>
-                    <ul>
-                        {% for showtime in showtime_data %}
-                            <li>{{ showtime.movie }} - {{ showtime.time }}</li>
-                        {% endfor %}
-                    </ul>
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card mb-4" style="background-color: antiquewhite; color: black;">
+                    <img src="{% static 'polls/images/showtimes.png' %}" class="card-img-top" alt="home">
+                    <div class="card-body" style="font-size: 1.2rem;">
+                        <p class="card-text">Check out our latest movie showtimes:</p>
+                        <ul>
+                            {% for showtime in showtime_data %}
+                                <li>{{ showtime.movie }} - {{ showtime.time }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 {% endblock %}
