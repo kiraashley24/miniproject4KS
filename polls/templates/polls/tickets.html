@@ -11,15 +11,20 @@
                     <div class="card mb-4" style="background-color: antiquewhite; color: black;">
                         <img src="{% static 'polls/images/tickets.png' %}" class="card-img-top" alt="tickets">
                         <div class="card-body" style="font-size: 1.2rem;">
-                            <p>Explore our ticket options:</p>
-                            <form method="post" action="{% url 'tickets' %}">
-                                {% csrf_token %}
-                                {{ form.as_p }}
-                                <button type="submit">Submit</button>
-                            </form>
-                            {% if ticket_purchase_message %}
-                                <p>{{ ticket_purchase_message }}</p>
+                            {% if ticket_submitted %}
+                                <p>Thanks for purchasing your tickets. Enjoy your movie!</p>
+                            {% else %}
+                                <p>Explore our ticket options:</p>
+                                <form method="post" action="{% url 'tickets' %}">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit">Submit</button>
+                                </form>
                             {% endif %}
+
+                            {% for ticket in ticket_data %}
+                                <p>{{ ticket }}</p>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
