@@ -5,6 +5,8 @@ from django.views import generic
 from django.utils import timezone
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from .models import TicketType, Ticket
+from .forms import TicketForm
 
 from .models import Choice, Question
 
@@ -85,14 +87,16 @@ def menu(request):
     return render(request, 'polls/menu.html', {'menu_data': menu_data})
 
 def tickets(request):
-    # Add logic to retrieve actual ticket data from your database
-    ticket_data = [
-        {"type": "Standard Ticket", "price": 12.99},
-        {"type": "Senior Ticket (65+)", "price": 9.99},
-        {"type": "Child Ticket (12 and under)", "price": 7.99},
-    ]
+    if request.method == 'POST':
+        form = TicketForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = TicketForm()
 
-    return render(request, 'polls/tickets.html', {'ticket_data': ticket_data})
+    ticket_data = Ticket.objects.all()
+
+    return render(request, 'polls/tickets.html', {'form': form, 'ticket_data': ticket_data})
 
 def contact(request):
     return render(request, "polls/contact.html")

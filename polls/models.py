@@ -25,3 +25,16 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+class TicketType(models.Model):
+    type_name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.type_name
+
+class Ticket(models.Model):
+    type = models.ForeignKey(TicketType, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.quantity} {self.type} ticket(s)"

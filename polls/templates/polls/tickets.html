@@ -1,3 +1,5 @@
+<!-- tickets.html -->
+
 {% extends 'base.html' %}
 
 {% load static %}
@@ -12,9 +14,14 @@
                         <img src="{% static 'polls/images/tickets.png' %}" class="card-img-top" alt="tickets">
                         <div class="card-body" style="font-size: 1.2rem;">
                             <p>Explore our ticket options:</p>
+                            <form method="post" action="{% url 'tickets' %}">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit">Purchase</button>
+                            </form>
                             <ul>
                                 {% for ticket in ticket_data %}
-                                    <li>{{ ticket.type }} - ${{ ticket.price }}</li>
+                                    <li>{{ ticket.quantity }} {{ ticket.type }} ticket(s)</li>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -23,16 +30,4 @@
             </div>
         </div>
     </div>
-
-
-    {% if latest_question_list %}
-        <ul>
-            {% for question in latest_question_list %}
-                <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No polls are available.</p>
-
-    {% endif %}
 {% endblock %}
