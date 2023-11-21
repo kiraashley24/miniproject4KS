@@ -45,8 +45,8 @@ class Showtime(models.Model):
         return self.time
 
 class Ticket(models.Model):
-    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, null=True, blank=True)
-    showtime = models.ForeignKey(Showtime, on_delete=models.CASCADE, null=True, blank=True)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, default=1)
+    showtime = models.ForeignKey(Showtime, on_delete=models.CASCADE, default=1)
     type = models.ForeignKey(TicketType, on_delete=models.CASCADE, default=1)
     quantity = models.PositiveIntegerField(default=0)
 
