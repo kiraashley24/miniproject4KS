@@ -10,8 +10,8 @@
                         {% if registration_success %}
                             <p>Registration successful. Welcome!</p>
                             <div class="mt-3 text-center">
-                                    <p><a href="{% url 'login' %}"> <em>Login here</em></a>.</p>
-                                </div>
+                                <p><a href="{% url 'login' %}"><em>Login here</em></a>.</p>
+                            </div>
                         {% else %}
                             <form method="post" action="{% url 'register' %}">
                                 {% csrf_token %}
@@ -29,8 +29,23 @@
                                 <br><br>
                                 <button type="submit" class="btn btn-primary btn-block">Register</button>
                             </form>
+                            {% if form.errors %}
+                                <div class="mt-3 text-danger">
+                                    <p>Registration failed. Please correct the following errors:</p>
+                                    <ul>
+                                        {% for field, errors in form.errors.items %}
+                                            {% for error in errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
                         {% endif %}
                     </div>
+                </div>
+                <div class="mt-3 text-center">
+                    <p><strong>Have an account? </strong> <a href="{% url 'login' %}"><strong>Login here</strong></a>.</p>
                 </div>
             </div>
         </div>

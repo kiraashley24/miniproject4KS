@@ -23,6 +23,7 @@ def register(request):
         else:
             for error in form.errors.values():
                 messages.error(request, error[0])
+
     else:
         form = UserCreationForm()
 
@@ -37,6 +38,7 @@ def login_view(request):
             messages.success(request, 'Login successful. Welcome!')
         else:
             messages.error(request, 'Login failed. Please check your username and password.')
+
     else:
         form = AuthenticationForm()
 
