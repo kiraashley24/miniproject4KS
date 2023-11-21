@@ -29,4 +29,5 @@ urlpatterns = [
     path('tickets/', views.tickets, name='tickets'),
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path("__debug__/", include("debug_toolbar.urls")),
 ]

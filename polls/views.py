@@ -7,7 +7,7 @@ from .forms import TicketForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
-
+from django.contrib.auth.views import LoginView
 def index(request):
     # Your view logic here
     return render(request, 'polls/index.html')  # Change 'polls/index.html' to your actual template path
@@ -35,7 +35,7 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            messages.success(request, 'Login successful. Welcome!')
+            return redirect('polls:tickets')
         else:
             messages.error(request, 'Login failed. Please check your username and password.')
 
@@ -64,25 +64,7 @@ def menu(request):
     return render(request, 'polls/menu.html', {'menu_data': menu_data})
 
 
-def tickets(request):
-    ticket_data = Ticket.objects.all()
-    form = TicketForm()
-    ticket_submitted = False
-
-    if request.method == 'POST':
-        form = TicketForm(request.POST)
-        if form.is_valid():
-            form.save()
-            ticket_submitted = True
-            form = TicketForm()  # Reset the form after successful submission
-
-    return render(
-        request,
-        'polls/tickets.html',
-        {'ticket_data': ticket_data, 'form': form, 'ticket_submitted': ticket_submitted}
-    )
-
-@login_required
+@login_required(login_url='/login/')
 def tickets(request):
     ticket_data = Ticket.objects.all()
     form = TicketForm()
