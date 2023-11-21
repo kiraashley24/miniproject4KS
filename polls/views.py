@@ -6,6 +6,7 @@ from .models import TicketType, Ticket
 from .forms import TicketForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.forms import AuthenticationForm
 
 def index(request):
     # Your view logic here
@@ -29,16 +30,17 @@ def register(request):
 
 def login_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
             login(request, user)
-            messages.success(request, 'Login successful. Welcome back!')
-            return redirect('index')  # Redirect to your index page
+            messages.success(request, 'Login successful. Welcome!')
         else:
             messages.error(request, 'Login failed. Please check your username and password.')
-    return render(request, 'registration/login.html')
+    else:
+        form = AuthenticationForm()
+
+    return render(request, 'registration/login.html', {'form': form})
 
 def showtimes(request):
     # Add logic to retrieve actual showtime data from your database
