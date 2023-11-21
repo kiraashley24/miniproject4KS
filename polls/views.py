@@ -1,3 +1,7 @@
+#INF 601 - Advanced Programming in Python
+#Kira Selucky
+#Mini project 4
+
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.forms import UserCreationForm
@@ -9,8 +13,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 def index(request):
-    # Your view logic here
-    return render(request, 'polls/index.html')  # Change 'polls/index.html' to your actual template path
+    return render(request, 'polls/index.html')
 
 def register(request):
     if request.method == 'POST':
@@ -35,9 +38,9 @@ def login_view(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            return redirect('polls:tickets')
+            return redirect('polls:tickets') # redirects to tickets page on successful login
         else:
-            messages.error(request, 'Login failed. Please check your username and password.')
+            messages.error(request, 'Login failed. Please check your username and password.') # unsuccessful message
 
     else:
         form = AuthenticationForm()
@@ -45,18 +48,16 @@ def login_view(request):
     return render(request, 'registration/login.html', {'form': form})
 
 def showtimes(request):
-    # Add logic to retrieve actual showtime data from your database
     showtime_data = [
         {"movie": "ALL MOVIES", "time": "11:00AM | 2:00PM | 6:00PM | 9:00PM | 11:00PM"},
     ]
-
     return render(request, 'polls/showtimes.html', {'showtime_data': showtime_data})
 
 def menu(request):
     return render(request, 'polls/menu.html')
 
 
-@login_required(login_url='/login/')
+@login_required(login_url='/login/') # requires login for ticket submission
 def tickets(request):
     ticket_data = Ticket.objects.all()
     form = TicketForm()
@@ -67,7 +68,7 @@ def tickets(request):
         if form.is_valid():
             form.save()
             ticket_submitted = True
-            form = TicketForm()  # Reset the form after successful submission
+            form = TicketForm()  # reset the form after successful submission
 
     return render(request, 'polls/tickets.html', {'ticket_data': ticket_data, 'form': form, 'ticket_submitted': ticket_submitted})
 

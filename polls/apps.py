@@ -1,3 +1,8 @@
+#INF 601 - Advanced Programming in Python
+#Kira Selucky
+#Mini project 4
+
+
 from django.apps import AppConfig
 
 
