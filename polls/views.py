@@ -53,15 +53,7 @@ def showtimes(request):
     return render(request, 'polls/showtimes.html', {'showtime_data': showtime_data})
 
 def menu(request):
-    # Add logic to retrieve actual menu data from your database
-    menu_data = [
-        {"item": "Burger", "price": 10.99},
-        {"item": "Popcorn", "price": 5.99},
-        {"item": "Pizza", "price": 12.99},
-        # Add more menu items as needed
-    ]
-
-    return render(request, 'polls/menu.html', {'menu_data': menu_data})
+    return render(request, 'polls/menu.html')
 
 
 @login_required(login_url='/login/')
