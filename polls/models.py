@@ -49,6 +49,7 @@ class Ticket(models.Model):
     showtime = models.ForeignKey(Showtime, on_delete=models.CASCADE, default=1)
     type = models.ForeignKey(TicketType, on_delete=models.CASCADE, default=1)
     quantity = models.PositiveIntegerField(default=0)
+    name = models.CharField(max_length=50, blank=False, default="John Doe")
 
     def __str__(self):
         return f"{self.quantity} {self.type.name} ticket(s)"

@@ -95,7 +95,11 @@ def tickets(request):
             ticket_submitted = True
             form = TicketForm()  # Reset the form after successful submission
 
-    return render(request, 'polls/tickets.html', {'ticket_data': ticket_data, 'form': form, 'ticket_submitted': ticket_submitted})
+    return render(
+        request,
+        'polls/tickets.html',
+        {'ticket_data': ticket_data, 'form': form, 'ticket_submitted': ticket_submitted}
+    )
 
 
 def contact(request):
