@@ -10,4 +10,4 @@ class TicketForm(forms.ModelForm):
 
     class Meta:
         model = Ticket
-        fields = ['type', 'quantity']
+        fields = ['movie', 'showtime', 'type', 'quantity']

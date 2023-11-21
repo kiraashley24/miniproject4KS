@@ -33,6 +33,8 @@ class TicketType(models.Model):
         return self.name
 
 class Ticket(models.Model):
+    movie = models.CharField(max_length=255, null=True, blank=True)
+    showtime = models.CharField(max_length=255, null=True, blank=True)
     type = models.ForeignKey(TicketType, on_delete=models.CASCADE, default=1)
     quantity = models.PositiveIntegerField(default=0)
 
