@@ -1,15 +1,16 @@
 from django.urls import path
 from . import views
+from django.contrib.auth import views as auth_views
+from .views import index
 
 app_name = "polls"
 urlpatterns = [
-    path("", views.IndexView.as_view(), name="index"),
-    path("<int:pk>/", views.DetailView.as_view(), name="detail"),
-    path("<int:pk>/results/", views.ResultsView.as_view(), name="results"),
-    path("<int:question_id>/vote/", views.vote, name="vote"),
+    path('', views.index, name='index'),
     path("register/", views.register, name="register"),
     path('showtimes/', views.showtimes, name='showtimes'),
     path('menu/', views.menu, name='menu'),
     path('tickets/', views.tickets, name='tickets'),
     path("contact/", views.contact, name="contact"),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]
