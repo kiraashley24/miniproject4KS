@@ -66,12 +66,7 @@ def register(request):
 def showtimes(request):
     # Add logic to retrieve actual showtime data from your database
     showtime_data = [
-        {"movie": "Elf", "time": "11:00AM | 2:00PM | 6:00PM | 9:00PM"},
-        {"movie": "Ghostbusters 2", "time": "11:45AM | 2:45PM | 6:45PM | 9:45PM"},
-        {"movie": "Saving Private Ryan", "time": "10:45AM | 1:45PM | 4:45PM | 8:45PM"},
-        {"movie": "Jurassic Park", "time": "10:00AM | 1:00PM | 4:00PM | 8:00PM"},
-        {"movie": "Shrek", "time": "10:30AM | 1:30PM | 4:30PM | 7:30PM"},
-        {"movie": "The Silence of the Lambs", "time": "3:00PM | 6:00PM | 9:00PM | 11:00PM"},
+        {"movie": "ALL MOVIES", "time": "11:00AM | 2:00PM | 6:00PM | 9:00PM | 11:00PM"},
     ]
 
     return render(request, 'polls/showtimes.html', {'showtime_data': showtime_data})
