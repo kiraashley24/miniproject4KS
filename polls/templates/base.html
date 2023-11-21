@@ -14,11 +14,13 @@
 <nav>
     <ul>
         <li><a href="{% url 'polls:index' %}">HOME</a></li>
-        <li><a href="{% url 'login' %}">LOGIN</a></li>
         <li><a href="{% url 'polls:menu' %}">FOOD MENU</a></li>
         <li><a href="{% url 'polls:showtimes' %}">SHOWTIMES</a></li>
         <li><a href="{% url 'polls:tickets' %}">TICKETS</a></li>
         <li><a href="{% url 'polls:contact' %}">CONTACT US</a></li>
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}">LOGOUT</a></li>
+        {% endif %}
     </ul>
 </nav>
 
